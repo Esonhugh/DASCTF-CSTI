@@ -30,9 +30,6 @@ func ReportToAdmin(c *gin.Context) {
 		c.AbortWithError(404, errors.New("Empty url"))
 	}
 	CurrentAdminPayload = userpayload
-	c.JSON(200, gin.H{
-		"report": "report to admin successful",
-	})
 	log.Println("Reported to admin: ", userpayload)
 	c.Redirect(302, "/?name="+userpayload)
 }
