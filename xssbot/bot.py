@@ -13,13 +13,18 @@ chrome_opt.add_argument('--window-size=1366,768')
 chrome_opt.add_argument("--no-sandbox")
 
 url = "http://webserver:8088/admin/view"
-admin_cookie = "admin="+open("/keys/admin_cookie.txt").read()
+admin_cookie = {
+        "name": "admin",
+        "value": open("/keys/admin_cookie.txt").read(),
+        }
 while 1:
     try:
         browser = webdriver.Chrome(executable_path='/var/xssbot/chromedriver', chrome_options=chrome_opt)
         print('get urls')
         print(url)
-        browser.add_cookie(cookie1)
+        browser.get(url)
+        print(admin_cookie)
+        browser.add_cookie(admin_cookie)
         browser.get(url)
         print('ok')
         print(browser.page_source)
@@ -27,4 +32,8 @@ while 1:
         browser.quit()
     except Exception as e:
         print (e)
+        try: 
+            print(e.message)
+        except e:
+            print(e)
         continue

@@ -2,10 +2,10 @@ FROM golang:1.19 AS builder
 
 WORKDIR /app
 COPY . /app
-RUN go build -o /web_bin /app/main.go
+RUN export GOPROXY=https://goproxy.io,direct; go build -o /web_bin /app/main.go
 
 ## Deploy
-FROM gcr.io/distroless/base-debian10 AS runner
+FROM debian:buster AS runner
 
 WORKDIR /
 
