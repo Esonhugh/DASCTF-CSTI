@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>UserView</title>
+</head>
+<body>
+<div id="app">
+    <h1>Hello ?name={{.name}}</h1>
+    <p>If you have no name there you will got "guset"</p>
+    <form action="/report" method="post">
+        <input name="name" id="name" value="Your_name">
+        <button>let admin see see</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+</html>
